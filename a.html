@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="b.css">
+<style>
+
+</style>
+</head>
+<body>
+
+<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+</div>
+
+<div id="main">
+  <button class="openbtn hamburger" onclick="openNav()">&#9776 Menu</button>  
+  
+
+    <div class="header">
+            <h1 class="titulo">Vote Connosco</h1>
+            <p class="pFrontal">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in ante condimentum, viverra tellus ac, vestibulum velit. In fringilla lobortis mi a ultrices. Duis malesuada ut lectus a malesuada. Praesent ullamcorper, urna at ullamcorper vehicula, purus leo tempus dui, sit amet ullamcorper nulla dolor at metus.</p>
+    </div>
+    <div class="miolo">
+        
+
+        <table class="tabelaDeOpcoes">
+            <tr>
+                <td class="tda"><!-- Criar Votacao -->
+                    <a class="hiperligacao" href="page.html">
+                        <div class="divOpcao criarVotacao">
+                            <h2>Criar Votação</h2>
+                        </div>
+                    </a>
+                </td>
+                <td><!-- Listar Votacoes -->
+                    <a class="hiperligacao" href="page.html">
+                        <div class="divOpcao listarVotacoes">
+                            <h2>Listar Votações</h2>
+                            <!--<i class="material-icons">format_list_bulleted</i>-->
+                        </div>
+                    </a>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    <div class="footer">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in ante condimentum, viverra tellus ac, vestibulum velit. In fringilla lobortis mi a ultrices. Duis malesuada ut lectus a malesuada. Praesent ullamcorper, urna at ullamcorper vehicula, purus leo tempus dui, sit amet ullamcorper nulla dolor at metus.</p>
+    </div>
+
+
+</div>
+
+<script>
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+</script>
+   
+</body>
+</html> 
