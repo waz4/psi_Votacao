@@ -9,22 +9,59 @@
 <link rel="stylesheet" href="b.css">
 <style>
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+  overflow: hidden;
+  background-color: #E8175D;
+
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+/* 
+li a:hover:not(.active) {
+  background-color: #111;
+} */
+
+.logo {
+    max-height: 100%;
+    max-width: 100;
+}
+.logo a {
+    padding: 0px 16px;
+}
+.logo-image {
+    width:auto;
+    height:46px;
+}
+
+
+
 </style>
 </head>
 <body>
 
-<div id="mySidebar" class="sidebar">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
-</div>
+    <ul>
+        <li class="logo"><a href="a.html">
+            <img src="logo.png" class="logo-image"></a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+        <li style="float:right"><a href="#login">Login</a></li>
+    </ul>
 
 <div id="main">
-  <button class="openbtn hamburger" onclick="openNav()">&#9776 Menu</button>  
-  
-
+    
     <div class="header">
             <h1 class="titulo">Vote Connosco</h1>
             <p class="pFrontal">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in ante condimentum, viverra tellus ac, vestibulum velit. In fringilla lobortis mi a ultrices. Duis malesuada ut lectus a malesuada. Praesent ullamcorper, urna at ullamcorper vehicula, purus leo tempus dui, sit amet ullamcorper nulla dolor at metus.</p>
@@ -35,7 +72,7 @@
         <table class="tabelaDeOpcoes">
             <tr>
                 <td class="tda"><!-- Criar Votacao -->
-                    <a class="hiperligacao" href="page.html">
+                    <a class="hiperligacao" href="c.html">
                         <div class="divOpcao criarVotacao">
                             <h2>Criar Votação</h2>
                         </div>
