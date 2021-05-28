@@ -3,7 +3,7 @@
   /*background-image: url(dundo.png);*/
   text-align: center;
   margin: 0;
-  background-color: #E8175D;
+  background-image: linear-gradient(to left, #faa93e , #ff8800, #E8175D, #be104a);
   padding: 4em;
   color: #f8f1f1;
 }
