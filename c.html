@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
 
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -58,46 +75,52 @@ li a {
 
     <ul>
       <li class="logo"><a href="a.html">
-        <img src="img\logo.png" class="logo-image"></a></li>
+        <img src="img\testeLogo2.png" class="logo-image"></a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="#about">About</a></li>
         <li style="float:right"><a href="#login">Login</a></li>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </ul>
 
   <div class="miolo">
     
     <form>
 
-    <table class="tabelaDeOpcoes">
-        <tr>  
-            <td>Pergunta:
-            </td>
+
+      <table class="tabelaDeOpcoes">
+        <tr>
+          <td>
+            <h1 class="titulo">Pergunta:</h1><br>
+          </td>
         </tr>
-        <tr>  
-            <td>
-            <input type="text" id="pergunta" name="pergunta"  required>
-            </td>
+        <tr>
+          <td>
+              <input type="text" id="pergunta" name="pergunta" placeholder="Escreva aqui a sua pergunta" class="input-field" required><br>
+          </td>
         </tr>
+        <tr>
+          <td>
+            <h1 class="titulo">Respostas:</h1><br>
+          </td>
+        </tr>
+        <tr>
+          <td>      
+            <h2 class="respostas">Resposta 1 </h2>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="text" id="resposta" name="resposta" placeholder="Escreva aqui a resposta numero 1" class="input-field" required><br>
+          </td>
+        </tr>
+      </table>
+    
+
+
+      <button type="submit" name="adicionarResposta" class="adicionar_resposta"><i class="fa fa-2x fa-plus-circle" style="color:orange"></i></button><br>
+      <input type="checkbox" id="visivel" name="visivel" value="visivel"  >Visivel</input><br>
       
-         <tr>       
-            <td>Resposta:
-            </td>
-        </tr>
-        <tr>       
-            <td>
-            <input type="text" id="resposta" name="resposta"  required>
-            </td>
-        </tr>
-        <tr>
-            <td>
-            <input type="checkbox" id="visivel" name="visivel" value="visivel"  >Visivel</input>
-            </td>
-        </tr>
-        <tr>
-            <td>
-            <input type="checkbox" id="aberto" name="aberto" value="Aberto" >Aberto</input>
-            </td>
-      </tr>      
+      <input type="checkbox" id="aberto" name="aberto" value="Aberto" >Aberto</input><br>
     </table>
 
     <input type="submit" name="submit" value="Submit">
@@ -110,8 +133,10 @@ li a {
   
   <div class="footer">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in ante condimentum, viverra tellus ac, vestibulum velit. In fringilla lobortis mi a ultrices. Duis malesuada ut lectus a malesuada. Praesent ullamcorper, urna at ullamcorper vehicula, purus leo tempus dui, sit amet ullamcorper nulla dolor at metus.</p>
-</div>
+  </div>
 
 </body>
 
 
+
+<!-- <i class="fa fa-2x fa-plus-circle" style="color:orange"></i> -->

@@ -6,19 +6,20 @@
   background-image: linear-gradient(to left, #faa93e , #ff8800, #E8175D, #be104a);
   padding: 4em;
   color: #f8f1f1;
+  padding-bottom: 10%;
 }
 
 .pFrontal {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  width: 30%;
+  width: 40%;
 }
 
 .miolo{
   text-align: center;
   margin: 0;
-  padding: 4em;
+  padding: 4em 4em 0em 4em;
   color: #161d6f;
   background-color: #474747;
   flex-direction: column;
@@ -32,8 +33,8 @@
   padding: 2em;
   color: white;
 
-  
-  position: fixed;
+  height: 10%;
+  float: bottom;
   left: 0;
   bottom: 0;
 }

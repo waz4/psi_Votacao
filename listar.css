@@ -1,28 +1,15 @@
-body {
-    background-image: linear-gradient(to left, #faa93e , #ff8800, #E8175D, #be104a);
-    /* background-image: linear-gradient(to right, #E8175D , #ff9100); */
-}
-
 a {
     text-decoration: none;
-    color: #000;
+    color: Black;
 }
-    
+
+.topo-esquerda {
+    float: left;
+    color:black;
+}
+
 a:hover {
     color: #ff9100;
-}
-
-.logo{
-    max-width: 100%;
-    max-height: 100%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
-}
-
-.caixa-imagem {
-    width: 100%;
 }
 
 .caixa-central {
@@ -65,8 +52,6 @@ tr {
 }
   
 .input-field {
-    margin-top: 2px;
-    margin-bottom: 2px;
     min-width: 200px;
     width: 50%;
     padding-top: 10px;
@@ -77,18 +62,3 @@ tr {
     border-radius: 4px;
     background-color: lightgrey;
 }
-
-/* Butão de login */
-input[type=button], input[type=submit], input[type=reset] {
-    min-width: 232px;
-    width: 50%;
-    padding: 16px 15px;
-    background-color: #ff9100;
-    border: none;
-    color: white;
-    text-decoration: none;
-    margin-top: 1.5em;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-bottom: 5px;
-  }
