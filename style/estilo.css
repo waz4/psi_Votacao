@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');
+
+.input-label-text {
+    font-weight: 500;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.linkNav {
+    text-decoration: none;
+    color: white;
+}
+
+.margem-topo {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+html,
+body {
+    height: 80%;
+}
+
+.tabela-votacao {
+    margin: 10%, 10%;
+}
