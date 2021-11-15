@@ -685,6 +685,7 @@ if (!empty($_POST)) {
     <!-- Modals Votacoes -->
     <?php fazerModals(1); ?>
 
+    <!-- NavBar -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -709,6 +710,8 @@ if (!empty($_POST)) {
             </div>
         </div>
     </nav>
+
+    <!-- Cabecalho -->
     <header>
         <section class="jumbotron text-center margem-topo">
             <div class="container">
@@ -722,7 +725,7 @@ if (!empty($_POST)) {
         </section>
     </header>
 
-
+    <!-- Conteudo -->
     <main class="bg-light h-100">
         <div class="d-flex d-flex aligns-items-center justify-content-center">
             <div>
@@ -742,7 +745,8 @@ if (!empty($_POST)) {
             </div>
         </div>
     </main>
-
+    
+    <!-- Rodape -->
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
 
@@ -754,18 +758,6 @@ if (!empty($_POST)) {
                 </a>
                 <span class="text-muted">© 2021 Company, Inc</span>
             </div>
-
-            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
-                            <use xlink:href="#twitter"></use>
-                        </svg></a></li>
-                <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
-                            <use xlink:href="#instagram"></use>
-                        </svg></a></li>
-                <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
-                            <use xlink:href="#facebook"></use>
-                        </svg></a></li>
-            </ul>
         </footer>
     </div>
 </body>
