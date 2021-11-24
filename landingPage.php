@@ -220,18 +220,19 @@ function updateChart($id_votacao)
 
 function fazerModals()
 {
+
     $conn = OpenCon();
     $sql_votacoes = "SELECT id_votacao FROM votacoes";
     $result_votacoes = mysqli_query($conn, $sql_votacoes);
     // var_dump($result_votacoes);
     CloseCon($conn);
-
+    $display_botao = "d-block";
+    $display_resultados = "d-block";
+    if (!isset($_SESSION["username"])) $display_botao = "d-none";
     // global $mostrarVotacao;
-    $display = "d-block";
-
+    
     for ($id_votacao = 1; $id_votacao <= mysqli_num_rows($result_votacoes); $id_votacao++) {
-        // if ($mostrarVotacao == $id_votacao) $display = "d-block";
-        // else $display = "d-none";
+        if(totalVotos($id_votacao) == 0) $display_resultados = "d-none";
     ?>
 
         <div class="modal fade" id="exampleModal<?php echo $id_votacao; ?>" tabindex="-1" aria-labelledby="exampleModalLabel<?php echo $id_votacao; ?>" aria-hidden="true">
@@ -252,13 +253,13 @@ function fazerModals()
                             <div class="form-floating mb-3">
                                 <p><?php echo idPorDescricao($id_votacao); ?></p>
                             </div>
-
-                            <?php lerRespostas($id_votacao); ?>
-
-                            <button class="w-100 mb-2 btn btn-lg rounded-4 btn-success" type="submit" name="modal_submit" value="on">Votar</button>
-
-                            <section id="resultados" class="<?php echo $display; ?>">
-                                <hr class="my-4">
+                            <section class="<?php echo $display_botao;?>">
+                                <?php lerRespostas($id_votacao); ?>
+                                
+                                <button class="w-100 mb-2 btn btn-lg rounded-4 btn-success " type="submit" name="modal_submit" value="on">Votar</button>
+                            </section>
+                            <section id="resultados" class="<?php echo $display_resultados; ?>">
+                                <hr class="my-4 <?php echo $display_botao;?>">
                                 <h2 class="fs-5 fw-bold mb-1">Resultados:</h2>
                                 <div class="container mt-2">
                                     <div class="container">
@@ -293,6 +294,7 @@ function votar($id_votacao, $id_resposta, $username)
 
 function verificarLogin($username, $password)
 {
+    global $erroLogin;
 
     $username = trim($username);
 
@@ -312,7 +314,8 @@ function verificarLogin($username, $password)
                 $_SESSION["username"] = $username;
                 $_SESSION["nome"] = $row["nome"];
                 $_SESSION["NIVEL_UTILIZADOR"] = $row["nivel_utilizador"];
-
+                
+                $_POST["sucesso"] = "sim";
                 // header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
                 // header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // past date to encourage expiring immediately
                 // header("Location: teste.php");
@@ -320,17 +323,16 @@ function verificarLogin($username, $password)
             }
         }
     } else {
+        $_POST["sucesso"] = "nao";
+        $erroLogin = "Dados Incorretos";
     }
 
-    echo "<br> Dados introduzidos estao errados!";
-
-    $erroLogin = "Dados Incorretos";
     return;
 }
 
 function registar($username, $nome, $sobrenome, $password)
 {
-
+    global $erroRegistar;
     $username = trim($username);
     $password = password_hash($password, PASSWORD_DEFAULT);
 
@@ -354,8 +356,10 @@ function registar($username, $nome, $sobrenome, $password)
         $res = mysqli_query($conn, $sql_users);
         CloseCon($conn);
         // var_dump($res);
-        $erroRegistar = "Conta Registada com sucesso!";
+        // $erroRegistar = "Conta Registada com sucesso!";
+        $_POST["sucesso"] = "sim";
     } else {
+        $_POST["sucesso"] = "nao";
         $erroRegistar = "Username ja registado no sistema";
     }
 }
@@ -364,7 +368,7 @@ function loginSection()
 {
     if (!isset($_SESSION["username"])) {
     ?>
-        <a class="text-decoration-none text-white" data-bs-toggle="modal" href="#exampleModalToggle" role="button" id="aModal">Login</a>
+        <a class="text-decoration-none text-white" data-bs-toggle="modal" href="#modalLogin" role="button" id="modal_btn_modalLogin">Login</a>
     <?php
     } else {
     ?>
@@ -458,6 +462,9 @@ function criarVotacao()
 function abrirModal() {
     if (isset($_POST["modal_submit"])) echo "autoClick(" . $_POST["id_votacao"] . ")";
     if (isset($_POST["adicionarPergunta"]) || isset($_POST["removerPergunta"])) echo "autoClick('_criarVotacao')";
+    if (isset($_POST["formSubmit"]) && $_POST["tipo"] == "login" && $_POST["sucesso"] != "sim") echo "autoClick('_modalLogin')";
+    if (isset($_POST["formSubmit"]) && $_POST["tipo"] == "registar" && $_POST["sucesso"] != "sim") echo "autoClick('_modalRegistar')";
+    if (isset($_POST["formSubmit"]) && $_POST["tipo"] == "registar" && $_POST["sucesso"] == "sim") echo "autoClick('_modalLogin')";
 }
 
 if (!empty($_POST)) {
@@ -473,6 +480,7 @@ if (!empty($_POST)) {
     if (isset($_POST["formSubmit"])) {
         if ($_POST["tipo"] == "login") {
             verificarLogin($_POST["formUser"], $_POST["formPasswd"]);
+
         }
         if ($_POST["tipo"] == "registar") {
             if ($_POST["formPasswd1"] == $_POST["formPasswd2"]) {
@@ -486,6 +494,7 @@ if (!empty($_POST)) {
 
     if (isset($_POST["formCriarVotacaoSubmit"])) {
         criarVotacao();
+        
     }
 }
 
@@ -506,7 +515,7 @@ if (!empty($_POST)) {
 <body onload="<?php abrirModal(); ?>">
 
     <!-- <pre> -->
-
+    
     <?php
     // echo "Post: <br>";
     // var_dump($_POST);
@@ -517,7 +526,7 @@ if (!empty($_POST)) {
     <!-- </pre> -->
 
     <!-- Modal Login -->
-    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal fade" id="modalLogin" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0">
 
@@ -559,8 +568,8 @@ if (!empty($_POST)) {
 
                 <div class="modal-footer">
                     <div class="w-100">
-                        <span class="float-start text-danger"><?php echo $erroRegistar; ?></span>
-                        <a class="text-decoration-none text-secondary float-end" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Não tem conta? Registe-se!</a>
+                        <span class="float-start text-danger"><?php echo $erroLogin; ?></span>
+                        <a class="text-decoration-none text-secondary float-end" data-bs-target="#modalRegistar" data-bs-toggle="modal" id="modal_btn_modalRegistar">Não tem conta? Registe-se!</a>
                     </div>
                 </div>
 
@@ -569,7 +578,7 @@ if (!empty($_POST)) {
     </div>
 
     <!-- Modal Registar -->
-    <div class="modal fade " id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+    <div class="modal fade " id="modalRegistar" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0">
 
@@ -625,7 +634,7 @@ if (!empty($_POST)) {
                 <div class="modal-footer">
                     <div class="w-100">
                         <span class="float-start text-danger"><?php echo $erroRegistar; ?></span>
-                        <a class="text-decoration-none text-secondary float-end" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" id="toggleModal">Já tem conta? Faça login!</a>
+                        <a class="text-decoration-none text-secondary float-end" data-bs-target="#modalLogin" data-bs-toggle="modal" id="toggleModal">Já tem conta? Faça login!</a>
                     </div>
                 </div>
 
@@ -685,7 +694,6 @@ if (!empty($_POST)) {
     <!-- Modals Votacoes -->
     <?php fazerModals(1); ?>
 
-    <!-- NavBar -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -698,10 +706,7 @@ if (!empty($_POST)) {
             <div class="collapse navbar-collapse" id="navbarsExample03">
                 <ul class="navbar-nav me-auto mb-2 mb-sm-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Lista de Votações</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" data-bs-target="#modal_criar_votacao" data-bs-toggle="modal" id="modal_btn_criarVotacao">Criar Votação</a>
+                        <a class="nav-link active <?php if (!isset($_SESSION["username"])) echo "d-none";?> " data-bs-target="#modal_criar_votacao" data-bs-toggle="modal" id="modal_btn_criarVotacao">Criar Votação</a>
                     </li>
                 </ul>
                 <span class="navbar-text">
@@ -710,22 +715,19 @@ if (!empty($_POST)) {
             </div>
         </div>
     </nav>
-
-    <!-- Cabecalho -->
     <header>
         <section class="jumbotron text-center margem-topo">
             <div class="container">
                 <h1>Votações Para Todos</h1>
                 <p class="lead text-muted">Contrua votacoes cativantes para as perguntas mais conhecidas da internet.</p>
                 <p>
-                    <a href="#" class="btn btn-primary my-2">Lista de Votações</a>
-                    <a class="btn btn-secondary my-2" data-bs-target="#modal_criar_votacao" data-bs-toggle="modal" id="modal_btn_criarVotacao">Criar Votação</a>
+                    <a class="btn btn-secondary my-2 <?php if (!isset($_SESSION["username"])) echo "d-none";?>" data-bs-target="#modal_criar_votacao" data-bs-toggle="modal" id="modal_btn_criarVotacao">Criar Votação</a>
                 </p>
             </div>
         </section>
     </header>
 
-    <!-- Conteudo -->
+
     <main class="bg-light h-100">
         <div class="d-flex d-flex aligns-items-center justify-content-center">
             <div>
@@ -745,8 +747,7 @@ if (!empty($_POST)) {
             </div>
         </div>
     </main>
-    
-    <!-- Rodape -->
+
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
 
@@ -758,6 +759,18 @@ if (!empty($_POST)) {
                 </a>
                 <span class="text-muted">© 2021 Company, Inc</span>
             </div>
+
+            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+                            <use xlink:href="#twitter"></use>
+                        </svg></a></li>
+                <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+                            <use xlink:href="#instagram"></use>
+                        </svg></a></li>
+                <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+                            <use xlink:href="#facebook"></use>
+                        </svg></a></li>
+            </ul>
         </footer>
     </div>
 </body>

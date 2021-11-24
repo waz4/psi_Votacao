@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Tempo de geração: 15-Nov-2021 às 10:46
+-- Tempo de geração: 24-Nov-2021 às 08:36
 -- Versão do servidor: 5.7.34
 -- versão do PHP: 8.0.8
 
@@ -33,15 +33,6 @@ CREATE TABLE `respostas` (
   `texto` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Extraindo dados da tabela `respostas`
---
-
-INSERT INTO `respostas` (`id_votacao`, `id_resposta`, `texto`) VALUES
-(1, 1, 'sim'),
-(1, 2, 'nao'),
-(1, 3, 'talvez');
-
 -- --------------------------------------------------------
 
 --
@@ -54,13 +45,6 @@ CREATE TABLE `respostas_resultado` (
   `username` varchar(150) NOT NULL,
   `time_stamp` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `respostas_resultado`
---
-
-INSERT INTO `respostas_resultado` (`id_votacao`, `id_resposta`, `username`, `time_stamp`) VALUES
-(1, 3, 'waza', '15-11-2021');
 
 -- --------------------------------------------------------
 
@@ -76,13 +60,6 @@ CREATE TABLE `users` (
   `temp` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Extraindo dados da tabela `users`
---
-
-INSERT INTO `users` (`username`, `nome`, `password`, `nivel_utilizador`, `temp`) VALUES
-('waza', 'goncalo antunes', '$2y$10$lQ/UwVBYaexLwx3IhgYyhunMiD5MkJJ7bhjmGXVzAedYcoDZuzHu.', 1, '');
-
 -- --------------------------------------------------------
 
 --
@@ -93,15 +70,8 @@ CREATE TABLE `votacoes` (
   `id_votacao` int(11) NOT NULL,
   `username` varchar(150) NOT NULL,
   `titulo` varchar(150) NOT NULL,
-  `descricao` varchar(150) NOT NULL
+  `descricao` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `votacoes`
---
-
-INSERT INTO `votacoes` (`id_votacao`, `username`, `titulo`, `descricao`) VALUES
-(1, 'waza', 'Gostas de fiambre?', '');
 
 --
 -- Índices para tabelas despejadas
