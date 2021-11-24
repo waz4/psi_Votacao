@@ -68,7 +68,7 @@ function lerRespostas($id_votacao)
         if (isset($_POST["btn-check"]) and ((int) $_POST["btn-check"] == $i)) $checked = "checked";
         else $checked = "";
         // var_dump($row);
-    ?>
+?>
 
         <div class="form-floating mb-3">
             <div>
@@ -130,7 +130,7 @@ function listarVotacoes()
             // echo "id_votacao: " . $row["id_votacao"] . " username: " . $row["username"] . " titulo: " . $row["titulo"] . " descricao: " . $row["descricao"] . " <hr>";
         }
     } else {
-        echo "0 results";
+        // echo "0 results";
     }
 }
 
@@ -230,9 +230,11 @@ function fazerModals()
     $display_resultados = "d-block";
     if (!isset($_SESSION["username"])) $display_botao = "d-none";
     // global $mostrarVotacao;
-    
+
     for ($id_votacao = 1; $id_votacao <= mysqli_num_rows($result_votacoes); $id_votacao++) {
-        if(totalVotos($id_votacao) == 0) $display_resultados = "d-none";
+        $id_votacao = mysqli_fetch_assoc($result_votacoes)["id_votacao"];
+        // var_dump($id_votacao);
+        if (totalVotos($id_votacao) == 0) $display_resultados = "d-none";
     ?>
 
         <div class="modal fade" id="exampleModal<?php echo $id_votacao; ?>" tabindex="-1" aria-labelledby="exampleModalLabel<?php echo $id_votacao; ?>" aria-hidden="true">
@@ -246,20 +248,20 @@ function fazerModals()
 
                     <div class="modal-body p-5 pt-0">
 
-                        <form class="#" method="post" id="<?php echo "form" . $id_votacao;?>">
-                            
+                        <form class="#" method="post" id="<?php echo "form" . $id_votacao; ?>">
+
                             <input type="hidden" name="id_votacao" value="<?php echo $id_votacao; ?>">
 
                             <div class="form-floating mb-3">
                                 <p><?php echo idPorDescricao($id_votacao); ?></p>
                             </div>
-                            <section class="<?php echo $display_botao;?>">
+                            <section class="<?php echo $display_botao; ?>">
                                 <?php lerRespostas($id_votacao); ?>
-                                
+
                                 <button class="w-100 mb-2 btn btn-lg rounded-4 btn-success " type="submit" name="modal_submit" value="on">Votar</button>
                             </section>
                             <section id="resultados" class="<?php echo $display_resultados; ?>">
-                                <hr class="my-4 <?php echo $display_botao;?>">
+                                <hr class="my-4 <?php echo $display_botao; ?>">
                                 <h2 class="fs-5 fw-bold mb-1">Resultados:</h2>
                                 <div class="container mt-2">
                                     <div class="container">
@@ -269,6 +271,18 @@ function fazerModals()
                                 </div>
                             </section>
                         </form>
+                        <?php
+                        if (isset($_SESSION["NIVEL_UTILIZADOR"]) && $_SESSION["NIVEL_UTILIZADOR"] == 2) {
+                        ?>
+                            <form action="#" method="post">
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-secondary material-icons" data-dismiss="modal" name="deleteModal">delete</button>
+                                    <input type="hidden" name="delete" value="<?php echo $id_votacao; ?>">
+                                </div>
+                            </form>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -314,7 +328,7 @@ function verificarLogin($username, $password)
                 $_SESSION["username"] = $username;
                 $_SESSION["nome"] = $row["nome"];
                 $_SESSION["NIVEL_UTILIZADOR"] = $row["nivel_utilizador"];
-                
+
                 $_POST["sucesso"] = "sim";
                 // header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
                 // header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // past date to encourage expiring immediately
@@ -410,11 +424,11 @@ function listarPerguntas()
 function criarVotacao()
 {
     if (!isset($_SESSION["username"])) {
-        ?> 
+    ?>
         <script>
             alert("Para criar votação é preciso estar registado!");
         </script>
-        <?php
+<?php
         return;
     }
     $titulo = $_POST["formTitulo"];
@@ -422,7 +436,7 @@ function criarVotacao()
     global $numeroDePergunta;
     $perguntas = array();
 
-    for ($i = 1; $i <= $numeroDePergunta; $i++) if(isset($_POST["formPergunta" . $i])) array_push($perguntas, $_POST["formPergunta" . $i]);
+    for ($i = 1; $i <= $numeroDePergunta; $i++) if (isset($_POST["formPergunta" . $i])) array_push($perguntas, $_POST["formPergunta" . $i]);
 
     $sql_votacoes = "SELECT id_votacao FROM votacoes";
 
@@ -455,11 +469,12 @@ function criarVotacao()
     }
 
     CloseCon($conn);
-    
+
     // echo $id_votacao;
 }
 
-function abrirModal() {
+function abrirModal()
+{
     if (isset($_POST["modal_submit"])) echo "autoClick(" . $_POST["id_votacao"] . ")";
     if (isset($_POST["adicionarPergunta"]) || isset($_POST["removerPergunta"])) echo "autoClick('_criarVotacao')";
     if (isset($_POST["formSubmit"]) && $_POST["tipo"] == "login" && $_POST["sucesso"] != "sim") echo "autoClick('_modalLogin')";
@@ -467,8 +482,21 @@ function abrirModal() {
     if (isset($_POST["formSubmit"]) && $_POST["tipo"] == "registar" && $_POST["sucesso"] == "sim") echo "autoClick('_modalLogin')";
 }
 
+function deleteModal($id_votacao)
+{
+
+    $conn = OpenCon();
+
+    mysqli_query($conn, "DELETE FROM votacoes WHERE id_votacao = " . $id_votacao);
+    mysqli_query($conn, "DELETE FROM respostas WHERE id_votacao = " . $id_votacao);
+    mysqli_query($conn, "DELETE FROM respostas_resultado WHERE id_votacao = " . $id_votacao);
+
+    CloseCon($conn);
+}
+
 if (!empty($_POST)) {
     if (isset($_POST["sair"])) fecharSessao();
+
     if (isset($_POST["modal_submit"])) {
         if (isset($_POST["btn-check-" . $_POST["id_votacao"]])) {
             // $mostrarVotacao = $_POST["id_votacao"];
@@ -477,10 +505,10 @@ if (!empty($_POST)) {
             }
         }
     }
+
     if (isset($_POST["formSubmit"])) {
         if ($_POST["tipo"] == "login") {
             verificarLogin($_POST["formUser"], $_POST["formPasswd"]);
-
         }
         if ($_POST["tipo"] == "registar") {
             if ($_POST["formPasswd1"] == $_POST["formPasswd2"]) {
@@ -488,21 +516,22 @@ if (!empty($_POST)) {
             } else $erroRegistar = "Passwords não coincidem!";
         }
     }
+
     if (isset($_POST["numeroDePergunta"])) $numeroDePergunta = $_POST["numeroDePergunta"];
     if (isset($_POST["adicionarPergunta"])) $numeroDePergunta++;
     if (isset($_POST["removerPergunta"]) && $numeroDePergunta > 2) $numeroDePergunta--;
 
     if (isset($_POST["formCriarVotacaoSubmit"])) {
         criarVotacao();
-        
     }
+
+    if (isset($_POST["deleteModal"])) deleteModal($_POST["delete"]);
 }
 
 ?>
 
 <head>
     <meta charset="UTF-8">
-    <!-- <link rel="stylesheet" href="estilo.css"> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/bootstrap.css">
@@ -515,7 +544,7 @@ if (!empty($_POST)) {
 <body onload="<?php abrirModal(); ?>">
 
     <!-- <pre> -->
-    
+
     <?php
     // echo "Post: <br>";
     // var_dump($_POST);
@@ -694,6 +723,7 @@ if (!empty($_POST)) {
     <!-- Modals Votacoes -->
     <?php fazerModals(1); ?>
 
+    <!-- NavBar -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -706,7 +736,10 @@ if (!empty($_POST)) {
             <div class="collapse navbar-collapse" id="navbarsExample03">
                 <ul class="navbar-nav me-auto mb-2 mb-sm-0">
                     <li class="nav-item">
-                        <a class="nav-link active <?php if (!isset($_SESSION["username"])) echo "d-none";?> " data-bs-target="#modal_criar_votacao" data-bs-toggle="modal" id="modal_btn_criarVotacao">Criar Votação</a>
+                        <a class="nav-link active <?php if (!isset($_SESSION["username"])) echo "d-none"; ?> " data-bs-target="#modal_criar_votacao" data-bs-toggle="modal" id="modal_btn_criarVotacao">Criar Votação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active <?php if (!isset($_SESSION["NIVEL_UTILIZADOR"]) || $_SESSION["NIVEL_UTILIZADOR"] != 2) echo "d-none"; ?> " href="gerirUsers.php">Gerir Utilizadores</a>
                     </li>
                 </ul>
                 <span class="navbar-text">
@@ -721,7 +754,7 @@ if (!empty($_POST)) {
                 <h1>Votações Para Todos</h1>
                 <p class="lead text-muted">Contrua votacoes cativantes para as perguntas mais conhecidas da internet.</p>
                 <p>
-                    <a class="btn btn-secondary my-2 <?php if (!isset($_SESSION["username"])) echo "d-none";?>" data-bs-target="#modal_criar_votacao" data-bs-toggle="modal" id="modal_btn_criarVotacao">Criar Votação</a>
+                    <a class="btn btn-secondary my-2 <?php if (!isset($_SESSION["username"])) echo "d-none"; ?>" data-bs-target="#modal_criar_votacao" data-bs-toggle="modal" id="modal_btn_criarVotacao">Criar Votação</a>
                 </p>
             </div>
         </section>
