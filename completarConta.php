@@ -30,11 +30,11 @@ $_SESSION["completar_conta"] = 0;
 
 <body>
 
-    <pre>
+    <!-- <pre> -->
     <?php
-    var_dump($_POST);
+    // var_dump($_POST);
     ?>
-    </pre>
+    <!-- </pre> -->
 
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
         <div class="container-fluid">
