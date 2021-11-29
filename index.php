@@ -7,7 +7,6 @@
     }
 </script>
 
-<!-- adicionar modal para o listar, login, registar, criar, bolachinhas -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -330,9 +329,7 @@ function verificarLogin($username, $password)
                 $_SESSION["NIVEL_UTILIZADOR"] = $row["nivel_utilizador"];
 
                 $_POST["sucesso"] = "sim";
-                // header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
-                // header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // past date to encourage expiring immediately
-                // header("Location: teste.php");
+
                 return;
             }
         }
@@ -366,12 +363,14 @@ function registar($username, $nome, $sobrenome, $password)
         $nivel_utilizador = 1;
         $sql_users = "INSERT INTO users VALUES ('" . $username . "', '" . $nome . "', '" . $password . "', " . $nivel_utilizador . ", '' )";
 
-        $conn = OpenCon();
-        $res = mysqli_query($conn, $sql_users);
-        CloseCon($conn);
         // var_dump($res);
         // $erroRegistar = "Conta Registada com sucesso!";
         $_POST["sucesso"] = "sim";
+        $_SESSION["completar_conta_status"] = 1;
+        $_SESSION["completar_conta_sql_users"] = $sql_users;
+        header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
+        header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // past date to encourage expiring immediately
+        header("Location: completarConta.php");
     } else {
         $_POST["sucesso"] = "nao";
         $erroRegistar = "Username ja registado no sistema";
@@ -494,6 +493,29 @@ function deleteModal($id_votacao)
     CloseCon($conn);
 }
 
+function verificarCaptcha()
+{
+    global $result_captcha_type;
+    global $result_captcha;
+    $result_captcha = "";
+    require "captcha-php/1-captcha.php";
+    if (!$PHPCAP->verify($_POST["captcha"])) {
+        $result_captcha_type = "danger";
+        $result_captcha = "CAPTCHA Errado a conta não foi criada!";
+    }
+
+    // (B) PROCEED IF CAPTCHA CHECK OK
+    if ($result_captcha == "") {
+
+        $conn = OpenCon();
+        $result = mysqli_query($conn, $_SESSION["completar_conta_sql_users"]);
+        CloseCon($conn);
+        $result_captcha_type = "success";
+
+        $result_captcha = "Conta criada com sucesso!";
+    }
+}
+
 if (!empty($_POST)) {
     if (isset($_POST["sair"])) fecharSessao();
 
@@ -513,7 +535,10 @@ if (!empty($_POST)) {
         if ($_POST["tipo"] == "registar") {
             if ($_POST["formPasswd1"] == $_POST["formPasswd2"]) {
                 registar($_POST["formUser"], $_POST["formNome"], $_POST["formSobrenome"], $_POST["formPasswd1"]);
-            } else $erroRegistar = "Passwords não coincidem!";
+            } else{
+        $_POST["sucesso"] = "nao";
+        $erroRegistar = "Passwords não coincidem!";
+            } 
         }
     }
 
@@ -526,6 +551,8 @@ if (!empty($_POST)) {
     }
 
     if (isset($_POST["deleteModal"])) deleteModal($_POST["delete"]);
+
+    if (isset($_POST["form_captcha"])) verificarCaptcha();
 }
 
 ?>
@@ -553,6 +580,19 @@ if (!empty($_POST)) {
     ?>
 
     <!-- </pre> -->
+
+    <!-- Alerts -->
+    <!-- AlertCaptcha -->
+    <?php
+    if (isset($result_captcha)) {
+    ?>
+        <div class="mb-0 alert alert-<?php echo $result_captcha_type; ?> alert-dismissible fade show" role="alert">
+            <?php echo $result_captcha; ?>.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+    }
+    ?>
 
     <!-- Modal Login -->
     <div class="modal fade" id="modalLogin" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">

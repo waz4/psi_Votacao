@@ -175,8 +175,8 @@ if (!empty($_POST)) {
                                      Pesquisar por username, nome, ou nivel de utilizador &nbsp;
                                     <input type="text" name="campoPesquisa" value="<?php echo $campoPesquisa;?>">
                     
-                                    <button type="submit" name="pesquisar">Pesquisar</button>
-                                    <button type="submit" >Limpar</button>
+                                    <button type="submit" name="pesquisar" class="btn btn-secondary">Pesquisar</button>
+                                    <button type="submit" class="btn btn-secondary" >Limpar</button>
                       </form>
                     <table class="table">
                         <thead>
