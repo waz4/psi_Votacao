@@ -1,0 +1,17 @@
+.coment-div {
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+.coment-span {
+    display: table;
+    margin: 0 auto;
+}
+
+.btn-comentario {
+    color: #bf46e8;
+}
+
+.btn-comentario:hover {
+    color: #eb3beb;
+}

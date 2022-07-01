@@ -792,7 +792,7 @@ if (!empty($_POST)) {
         <section class="jumbotron text-center margem-topo">
             <div class="container">
                 <h1>Votações Para Todos</h1>
-                <p class="lead text-muted">Contrua votacoes cativantes para as perguntas mais conhecidas da internet.</p>
+                <p class="lead text-muted">Construa votacoes cativantes para as perguntas mais conhecidas da internet.</p>
                 <p>
                     <a class="btn btn-secondary my-2 <?php if (!isset($_SESSION["username"])) echo "d-none"; ?>" data-bs-target="#modal_criar_votacao" data-bs-toggle="modal" id="modal_btn_criarVotacao">Criar Votação</a>
                 </p>

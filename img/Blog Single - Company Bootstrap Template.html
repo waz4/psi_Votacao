@@ -1,0 +1,679 @@
+<!-- saved from url=(0059)http://localhost:8888/github/PAP/post-single.php?id_post=3# -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script>
+        // flag == true:  Esconader Botao abrir, Motrar zona de comentario
+        // flag == false: Mostrar Botao abrir, Esconder zona de comentario
+        function toggleComentario(id, flag) {
+            var botaoAbrir = document.getElementById("comentario-reply-abrir-" + id);
+            var botaoFechar = document.getElementById("comentario-novo-" + id);
+            if (flag) {
+                // botaoAbrir.classList.add("visually-hidden-focusable");
+
+                botaoFechar.classList.remove("d-none");
+            } else {
+                // botaoAbrir.classList.remove("visually-hidden-focusable");
+                botaoFechar.classList.add("d-none");
+            }
+
+
+        }
+    </script>
+
+
+
+
+
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Blog Single - Company Bootstrap Template</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="http://localhost:8888/github/PAP/assets/img/favicon.png" rel="icon">
+    <link href="http://localhost:8888/github/PAP/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="./Blog Single - Company Bootstrap Template_files/css" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="./Blog Single - Company Bootstrap Template_files/animate.min.css" rel="stylesheet">
+    <link href="./Blog Single - Company Bootstrap Template_files/aos.css" rel="stylesheet">
+    <link href="./Blog Single - Company Bootstrap Template_files/bootstrap.min.css" rel="stylesheet">
+    <link href="./Blog Single - Company Bootstrap Template_files/bootstrap-icons.css" rel="stylesheet">
+    <link href="./Blog Single - Company Bootstrap Template_files/boxicons.min.css" rel="stylesheet">
+    <link href="./Blog Single - Company Bootstrap Template_files/glightbox.min.css" rel="stylesheet">
+    <link href="./Blog Single - Company Bootstrap Template_files/remixicon.css" rel="stylesheet">
+    <link href="./Blog Single - Company Bootstrap Template_files/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="./Blog Single - Company Bootstrap Template_files/style.css" rel="stylesheet">
+
+    <!-- Icones Googles -->
+    <link href="./Blog Single - Company Bootstrap Template_files/icon" rel="stylesheet">
+
+    <!-- CSS extra -->
+    <link rel="stylesheet" href="./Blog Single - Company Bootstrap Template_files/estilo-post-single.css">
+
+    <!-- =======================================================
+  * Template Name: Company - v4.6.1
+  * Template URL: https://bootstrapmade.com/company-free-html-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="0">
+
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+
+            <h1 class="logo me-auto"><a href="http://localhost:8888/github/PAP/index.php"><span>Com</span>pany</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.php" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li><a href="http://localhost:8888/github/PAP/index.php">Home</a></li>
+
+                    <li class="dropdown"><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="http://localhost:8888/github/PAP/about.html">About Us</a></li>
+                            <li><a href="http://localhost:8888/github/PAP/team.html">Team</a></li>
+                            <li><a href="http://localhost:8888/github/PAP/testimonials.html">Testimonials</a></li>
+                            <li class="dropdown"><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                                <ul>
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Deep Drop Down 1</a></li>
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Deep Drop Down 2</a></li>
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Deep Drop Down 3</a></li>
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Deep Drop Down 4</a></li>
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Deep Drop Down 5</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li><a href="http://localhost:8888/github/PAP/services.html">Services</a></li>
+                    <li><a href="http://localhost:8888/github/PAP/portfolio.html">Portfolio</a></li>
+                    <li><a href="http://localhost:8888/github/PAP/pricing.html">Pricing</a></li>
+                    <li><a href="http://localhost:8888/github/PAP/blog.html" class="active">Blog</a></li>
+                    <li><a href="http://localhost:8888/github/PAP/contact.html">Contact</a></li>
+
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+            <!-- .navbar -->
+
+            <div class="header-social-links d-flex">
+                <a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#" class="twitter"><i class="bu bi-twitter"></i></a>
+                <a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#" class="facebook"><i class="bu bi-facebook"></i></a>
+                <a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#" class="instagram"><i class="bu bi-instagram"></i></a>
+                <a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#" class="linkedin"><i class="bu bi-linkedin"></i></a>
+            </div>
+
+        </div>
+    </header>
+    <!-- End Header -->
+
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Blog Single</h2>
+                    <ol>
+                        <li><a href="http://localhost:8888/github/PAP/index.php">Home</a></li>
+                        <li><a href="http://localhost:8888/github/PAP/blog.html">Blog</a></li>
+                        <li>Blog Single</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section>
+        <!-- End Breadcrumbs -->
+
+        <!-- ======= Blog Single Section ======= -->
+        <section id="blog" class="blog">
+            <div class="container aos-init aos-animate" data-aos="fade-up">
+
+                <div class="row">
+
+                    <div class="col-lg-8 entries">
+
+                        <article class="entry entry-single">
+                            <!-- Imagem principal -->
+                            <div class="entry-img">
+                                <img src="./Blog Single - Company Bootstrap Template_files/1645608274-8961.jpeg" width="100%" height="auto" class="mx-auto d-block">
+                            </div>
+
+                            <h2 class="entry-title">
+                                <a href="http://localhost:8888/github/PAP/blog-single.html">A nossa história</a>
+                            </h2>
+
+                            <div class="entry-meta">
+                                <ul>
+                                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="http://localhost:8888/github/PAP/blog-single.html">goncalo</a></li>
+                                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="http://localhost:8888/github/PAP/blog-single.html"><time datetime="2020-01-01">fev 23, 2022</time></a></li>
+                                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="http://localhost:8888/github/PAP/blog-single.html">12 Comentários</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- inserir conteudo aqui -->
+                            <div class="entry-content">
+                                <p>
+                                    A partir de sua experiência pessoal com esses incríveis e preciosos recursos oferecidos pela natureza, um grupo de profissionais das áreas comercial e de saúde se propôs a tornar realidade o desejo comum de compartilhar com o mundo os benefícios dos óleos
+                                    essenciais. </p>
+                                <p>
+                                    Assim, foi criada a doTERRA: nome que se origina do latim e que significa "Dádiva da Terra". </p>
+                                <p>
+                                    Para os fundadores da doTERRA, não bastava simplesmente disponibilizar óleos essenciais para lares em todo o mundo; eles haviam se comprometido a fornecer, exclusivamente, os óleos essenciais mais puros e de melhor qualidade possível. Surgiu, então, o
+                                    primeiro desafio a ser superado: estabelecer, em um setor até então inexistente, um padrão máximo de qualidade. Esse comprometimento resultou, assim, na criação de um novo e elevado padrão de qualidade: o CPTG™ (Certificado
+                                    de Pureza Testada e Garantida), o qual foi desenvolvido para que os usuários dos óleos essenciais doTERRA pudessem ter a certeza de que estavam usando o que poderia existir de melhor para promover o bem-estar de seus
+                                    entes queridos. </p>
+                                <img src="./Blog Single - Company Bootstrap Template_files/1645608208-1958.png" class="img-fluid" alt="Teste">
+
+                            </div>
+
+                            <div class="entry-footer">
+                                <i class="bi bi-folder"></i>
+                                <ul class="cats">
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Lifestyle</a></li>
+                                </ul>
+
+                                <i class="bi bi-tags"></i>
+                                <ul class="tags">
+                                </ul>
+                            </div>
+
+                        </article>
+                        <!-- End blog entry -->
+
+                        <div class="blog-author d-flex align-items-center">
+                            <img src="./Blog Single - Company Bootstrap Template_files/blog-author.jpg" class="rounded-circle float-left" alt="">
+                            <div>
+                                <h4>Jane Smith</h4>
+                                <div class="social-links">
+                                    <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
+                                    <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
+                                    <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
+                                </div>
+                                <p>
+                                    Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- End blog author bio -->
+
+                        <div class="blog-comments">
+                            <h4 class="comments-count">7 Comentários</h4>
+                            <div class="comment">
+                                <div class="d-flex">
+                                    <div class="comment-img"><img src="./Blog Single - Company Bootstrap Template_files/comments-1.jpg" alt=""></div>
+                                    <div>
+                                        <h5><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3">goncalo</a>
+                                            <!-- <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a> -->
+                                            <button id="comentario-reply-abrir-0" class="reply btn" onclick="toggleComentario(0, true);"><span class="material-icons">reply</span></button>
+                                        </h5>
+                                        <time datetime="2020-01-01">fev 23, 2022</time>
+                                        <p>
+                                            Wow gostei muito do conteudo! </p>
+                                    </div>
+                                </div>
+
+                                <div id="comentario-novo-0" class="comment comment-reply d-none">
+                                    <div class="d-flex reply-form">
+                                        <div class="w-100">
+                                            <h4><span class="material-icons">north</span> Deixe a sua resposta <button class="float-end btn" onclick="toggleComentario(0, false);"><span class="material-icons btn-comentario">close</span></button></h4>
+
+                                            <form action="http://localhost:8888/github/PAP/post-single.php?id_post=3#" method="POST">
+                                                <div class="row mt-2 ">
+                                                    <div class="col form-group ">
+                                                        <textarea name="comentario" class="form-control " placeholder="A sua resposta* " rows="5 "></textarea>
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="id_post" value="3">
+                                                <input type="hidden" name="comentario_alvo" value="0">
+                                                <button type="submit" class="btn btn-primary" name="comentario_principal_submit">Responder</button>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="comment-reply-1" class="comment comment-reply">
+                                    <div class="d-flex">
+                                        <div class="comment-img"><img src="./Blog Single - Company Bootstrap Template_files/comments-3.jpg" alt=""></div>
+                                        <div>
+                                            <h5><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3">goncalo</a>
+                                                <button id="comentario-reply-abrir-2" class="reply btn" onclick="toggleComentario(2, true);"><span class="material-icons">reply</span></button>
+                                            </h5>
+
+                                            <time>fev 23, 2022</time>
+                                            <p>
+                                                Obrigado! </p>
+                                        </div>
+                                    </div>
+
+                                    <div id="comentario-novo-2" class="comment comment-reply d-none">
+                                        <div class="d-flex reply-form">
+                                            <div class="w-100">
+                                                <h4><span class="material-icons">north</span> Deixe a sua resposta <button class="float-end btn" onclick="toggleComentario(2, false);"><span class="material-icons btn-comentario">close</span></button></h4>
+
+                                                <form action="http://localhost:8888/github/PAP/post-single.php?id_post=3#" method="POST">
+                                                    <div class="row mt-2 ">
+                                                        <div class="col form-group ">
+                                                            <textarea name="comentario" class="form-control " placeholder="A sua resposta* " rows="5 "></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" name="id_post" value="3">
+                                                    <input type="hidden" name="comentario_alvo" value="2">
+                                                    <button type="submit" class="btn btn-primary" name="comentario_principal_submit">Responder</button>
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="comment-reply-1" class="comment comment-reply">
+                                        <div class="d-flex">
+                                            <div class="comment-img"><img src="./Blog Single - Company Bootstrap Template_files/comments-3.jpg" alt=""></div>
+                                            <div>
+                                                <h5><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3">goncalo</a>
+                                                    <button id="comentario-reply-abrir-3" class="reply btn" onclick="toggleComentario(3, true);"><span class="material-icons">reply</span></button>
+                                                </h5>
+
+                                                <time>fev 23, 2022</time>
+                                                <p>
+                                                    Comentario de terceiro nivel </p>
+                                            </div>
+                                        </div>
+
+                                        <div id="comentario-novo-3" class="comment comment-reply d-none">
+                                            <div class="d-flex reply-form">
+                                                <div class="w-100">
+                                                    <h4><span class="material-icons">north</span> Deixe a sua resposta <button class="float-end btn" onclick="toggleComentario(3, false);"><span class="material-icons btn-comentario">close</span></button></h4>
+
+                                                    <form action="http://localhost:8888/github/PAP/post-single.php?id_post=3#" method="POST">
+                                                        <div class="row mt-2 ">
+                                                            <div class="col form-group ">
+                                                                <textarea name="comentario" class="form-control " placeholder="A sua resposta* " rows="5 "></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <input type="hidden" name="id_post" value="3">
+                                                        <input type="hidden" name="comentario_alvo" value="3">
+                                                        <button type="submit" class="btn btn-primary" name="comentario_principal_submit">Responder</button>
+
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="comment-reply-1" class="comment comment-reply">
+                                            <div class="d-flex">
+                                                <div class="comment-img"><img src="./Blog Single - Company Bootstrap Template_files/comments-3.jpg" alt=""></div>
+                                                <div>
+                                                    <h5><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3">goncalo</a>
+                                                        <button id="comentario-reply-abrir-5" class="reply btn" onclick="toggleComentario(5, true);"><span class="material-icons">reply</span></button>
+                                                    </h5>
+
+                                                    <time>fev 23, 2022</time>
+                                                    <p>
+                                                        Comentario de quarto nivel </p>
+                                                </div>
+                                            </div>
+
+                                            <div id="comentario-novo-5" class="comment comment-reply d-none">
+                                                <div class="d-flex reply-form">
+                                                    <div class="w-100">
+                                                        <h4><span class="material-icons">north</span> Deixe a sua resposta <button class="float-end btn" onclick="toggleComentario(5, false);"><span class="material-icons btn-comentario">close</span></button></h4>
+
+                                                        <form action="http://localhost:8888/github/PAP/post-single.php?id_post=3#" method="POST">
+                                                            <div class="row mt-2 ">
+                                                                <div class="col form-group ">
+                                                                    <textarea name="comentario" class="form-control " placeholder="A sua resposta* " rows="5 "></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <input type="hidden" name="id_post" value="3">
+                                                            <input type="hidden" name="comentario_alvo" value="5">
+                                                            <button type="submit" class="btn btn-primary" name="comentario_principal_submit">Responder</button>
+
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div id="comment-reply-1" class="comment comment-reply">
+                                    <div class="d-flex">
+                                        <div class="comment-img"><img src="./Blog Single - Company Bootstrap Template_files/comments-3.jpg" alt=""></div>
+                                        <div>
+                                            <h5><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3">goncalo</a>
+                                                <button id="comentario-reply-abrir-4" class="reply btn" onclick="toggleComentario(4, true);"><span class="material-icons">reply</span></button>
+                                            </h5>
+
+                                            <time>fev 23, 2022</time>
+                                            <p>
+                                                Espetacular! </p>
+                                        </div>
+                                    </div>
+
+                                    <div id="comentario-novo-4" class="comment comment-reply d-none">
+                                        <div class="d-flex reply-form">
+                                            <div class="w-100">
+                                                <h4><span class="material-icons">north</span> Deixe a sua resposta <button class="float-end btn" onclick="toggleComentario(4, false);"><span class="material-icons btn-comentario">close</span></button></h4>
+
+                                                <form action="http://localhost:8888/github/PAP/post-single.php?id_post=3#" method="POST">
+                                                    <div class="row mt-2 ">
+                                                        <div class="col form-group ">
+                                                            <textarea name="comentario" class="form-control " placeholder="A sua resposta* " rows="5 "></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" name="id_post" value="3">
+                                                    <input type="hidden" name="comentario_alvo" value="4">
+                                                    <button type="submit" class="btn btn-primary" name="comentario_principal_submit">Responder</button>
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            <!-- End comment #1 -->
+                            <div class="comment">
+                                <div class="d-flex">
+                                    <div class="comment-img"><img src="./Blog Single - Company Bootstrap Template_files/comments-1.jpg" alt=""></div>
+                                    <div>
+                                        <h5><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3">goncalo</a>
+                                            <!-- <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a> -->
+                                            <button id="comentario-reply-abrir-1" class="reply btn" onclick="toggleComentario(1, true);"><span class="material-icons">reply</span></button>
+                                        </h5>
+                                        <time datetime="2020-01-01">fev 23, 2022</time>
+                                        <p>
+                                            Funcionou obrigado </p>
+                                    </div>
+                                </div>
+
+                                <div id="comentario-novo-1" class="comment comment-reply d-none">
+                                    <div class="d-flex reply-form">
+                                        <div class="w-100">
+                                            <h4><span class="material-icons">north</span> Deixe a sua resposta <button class="float-end btn" onclick="toggleComentario(1, false);"><span class="material-icons btn-comentario">close</span></button></h4>
+
+                                            <form action="http://localhost:8888/github/PAP/post-single.php?id_post=3#" method="POST">
+                                                <div class="row mt-2 ">
+                                                    <div class="col form-group ">
+                                                        <textarea name="comentario" class="form-control " placeholder="A sua resposta* " rows="5 "></textarea>
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="id_post" value="3">
+                                                <input type="hidden" name="comentario_alvo" value="1">
+                                                <button type="submit" class="btn btn-primary" name="comentario_principal_submit">Responder</button>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="comment-reply-1" class="comment comment-reply">
+                                    <div class="d-flex">
+                                        <div class="comment-img"><img src="./Blog Single - Company Bootstrap Template_files/comments-3.jpg" alt=""></div>
+                                        <div>
+                                            <h5><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3">goncalo</a>
+                                                <button id="comentario-reply-abrir-6" class="reply btn" onclick="toggleComentario(6, true);"><span class="material-icons">reply</span></button>
+                                            </h5>
+
+                                            <time>fev 23, 2022</time>
+                                            <p>
+                                                Comentario de segundo nivel </p>
+                                        </div>
+                                    </div>
+
+                                    <div id="comentario-novo-6" class="comment comment-reply d-none">
+                                        <div class="d-flex reply-form">
+                                            <div class="w-100">
+                                                <h4><span class="material-icons">north</span> Deixe a sua resposta <button class="float-end btn" onclick="toggleComentario(6, false);"><span class="material-icons btn-comentario">close</span></button></h4>
+
+                                                <form action="http://localhost:8888/github/PAP/post-single.php?id_post=3#" method="POST">
+                                                    <div class="row mt-2 ">
+                                                        <div class="col form-group ">
+                                                            <textarea name="comentario" class="form-control " placeholder="A sua resposta* " rows="5 "></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" name="id_post" value="3">
+                                                    <input type="hidden" name="comentario_alvo" value="6">
+                                                    <button type="submit" class="btn btn-primary" name="comentario_principal_submit">Responder</button>
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            <!-- End comment #1 -->
+                            <div class="reply-form">
+                                <h4>Deixe o seu comentário</h4>
+                                <form action="http://localhost:8888/github/PAP/post-single.php?id_post=3#" method="post">
+                                    <input type="hidden" name="3">
+                                    <div class="row">
+                                        <div class="col form-group">
+                                            <textarea name="comentario" class="form-control" rows="5" placeholder="O seu comentário*"></textarea>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="id_post" value="3">
+                                    <input type="hidden" name="comentario_alvo" value="post">
+                                    <button type="submit" class="btn btn-primary" name="comentario_principal_submit">Comentar</button>
+                                </form>
+                            </div>
+
+                        </div>
+                        <!-- End blog comments -->
+
+                    </div>
+                    <!-- End blog entries list -->
+
+                    <div class="col-lg-4">
+
+                        <div class="sidebar">
+
+                            <h3 class="sidebar-title">Search</h3>
+                            <div class="sidebar-item search-form">
+                                <form action="http://localhost:8888/github/PAP/post-single.php?id_post=3">
+                                    <input type="text">
+                                    <button type="submit"><i class="bi bi-search"></i></button>
+                                </form>
+                            </div>
+                            <!-- End sidebar search formn-->
+
+                            <h3 class="sidebar-title">Categories</h3>
+                            <div class="sidebar-item categories">
+                                <ul>
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">General <span>(25)</span></a></li>
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Lifestyle <span>(12)</span></a></li>
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Travel <span>(5)</span></a></li>
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Design <span>(22)</span></a></li>
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Creative <span>(8)</span></a></li>
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Educaion <span>(14)</span></a></li>
+                                </ul>
+                            </div>
+                            <!-- End sidebar categories-->
+
+                            <h3 class="sidebar-title">Recent Posts</h3>
+                            <div class="sidebar-item recent-posts">
+                                <div class="post-item clearfix">
+                                    <img src="./Blog Single - Company Bootstrap Template_files/blog-recent-1.jpg" alt="">
+                                    <h4><a href="http://localhost:8888/github/PAP/blog-single.html">Nihil blanditiis at in nihil autem</a></h4>
+                                    <time datetime="2020-01-01">Jan 1, 2020</time>
+                                </div>
+
+                                <div class="post-item clearfix">
+                                    <img src="./Blog Single - Company Bootstrap Template_files/blog-recent-2.jpg" alt="">
+                                    <h4><a href="http://localhost:8888/github/PAP/blog-single.html">Quidem autem et impedit</a></h4>
+                                    <time datetime="2020-01-01">Jan 1, 2020</time>
+                                </div>
+
+                                <div class="post-item clearfix">
+                                    <img src="./Blog Single - Company Bootstrap Template_files/blog-recent-3.jpg" alt="">
+                                    <h4><a href="http://localhost:8888/github/PAP/blog-single.html">Id quia et et ut maxime similique occaecati ut</a></h4>
+                                    <time datetime="2020-01-01">Jan 1, 2020</time>
+                                </div>
+
+                                <div class="post-item clearfix">
+                                    <img src="./Blog Single - Company Bootstrap Template_files/blog-recent-4.jpg" alt="">
+                                    <h4><a href="http://localhost:8888/github/PAP/blog-single.html">Laborum corporis quo dara net para</a></h4>
+                                    <time datetime="2020-01-01">Jan 1, 2020</time>
+                                </div>
+
+                                <div class="post-item clearfix">
+                                    <img src="./Blog Single - Company Bootstrap Template_files/blog-recent-5.jpg" alt="">
+                                    <h4><a href="http://localhost:8888/github/PAP/blog-single.html">Et dolores corrupti quae illo quod dolor</a></h4>
+                                    <time datetime="2020-01-01">Jan 1, 2020</time>
+                                </div>
+
+                            </div>
+                            <!-- End sidebar recent posts-->
+
+                            <h3 class="sidebar-title">Tags</h3>
+                            <div class="sidebar-item tags">
+                                <ul>
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">App</a></li>
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">IT</a></li>
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Business</a></li>
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Mac</a></li>
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Design</a></li>
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Office</a></li>
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Creative</a></li>
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Studio</a></li>
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Smart</a></li>
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Tips</a></li>
+                                    <li><a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Marketing</a></li>
+                                </ul>
+                            </div>
+                            <!-- End sidebar tags-->
+
+                        </div>
+                        <!-- End sidebar -->
+
+                    </div>
+                    <!-- End blog sidebar -->
+
+                </div>
+
+            </div>
+        </section>
+        <!-- End Blog Single Section -->
+
+    </main>
+    <!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="d-block">
+
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h3>Company</h3>
+                        <p>
+                            A108 Adam Street <br> New York, NY 535022<br> United States <br><br>
+                            <strong>Phone:</strong> +1 5589 55488 55<br>
+                            <strong>Email:</strong> info@example.com<br>
+                        </p>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Home</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">About us</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Services</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Terms of service</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Privacy policy</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Our Services</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Web Design</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Web Development</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Product Management</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Marketing</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#">Graphic Design</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 footer-newsletter">
+                        <h4>Join Our Newsletter</h4>
+                        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                        <form action="http://localhost:8888/github/PAP/post-single.php?id_post=3" method="post">
+                            <input type="email" name="email"><input type="submit" value="Subscribe">
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container d-md-flex py-4">
+
+            <div class="me-md-auto text-center text-md-start">
+                <div class="copyright">
+                    © Copyright <strong><span>Company</span></strong>. All Rights Reserved
+                </div>
+                <div class="credits">
+                    <!-- All the links in the footer should remain intact. -->
+                    <!-- You can delete the links only if you purchased the pro version. -->
+                    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/company-free-html-bootstrap-template/ -->
+                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                </div>
+            </div>
+            <div class="social-links text-center text-md-right pt-3 pt-md-0">
+                <a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <a href="http://localhost:8888/github/PAP/post-single.php?id_post=3#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="./Blog Single - Company Bootstrap Template_files/aos.js"></script>
+    <script src="./Blog Single - Company Bootstrap Template_files/bootstrap.bundle.min.js"></script>
+    <script src="./Blog Single - Company Bootstrap Template_files/glightbox.min.js"></script>
+    <script src="./Blog Single - Company Bootstrap Template_files/isotope.pkgd.min.js"></script>
+    <script src="./Blog Single - Company Bootstrap Template_files/validate.js"></script>
+    <script src="./Blog Single - Company Bootstrap Template_files/swiper-bundle.min.js"></script>
+    <script src="./Blog Single - Company Bootstrap Template_files/noframework.waypoints.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="./Blog Single - Company Bootstrap Template_files/main.js"></script>
+
+
+
+</body>
+
+</html>
